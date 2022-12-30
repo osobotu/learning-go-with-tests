@@ -2,13 +2,16 @@ package main
 
 import "fmt"
 
+
 const spanish = "Spanish"
 const french = "French"
 const idoma = "Idoma"
+
 const englishHelloPrefix = "Hello, "
 const spanishHelloPrefix = "Hola, "
 const frenchHelloPrefix = "Bonjour, "
 const idomaHelloPrefix = "Nmaochi, "
+
 
 func Hello(name string, language string) string {
 	if name == "" {
@@ -18,7 +21,6 @@ func Hello(name string, language string) string {
 }
 
 func greetingPrefix(language string) (prefix string) {
-
 	switch language {
 	case french:
 		prefix = frenchHelloPrefix
@@ -30,10 +32,10 @@ func greetingPrefix(language string) (prefix string) {
 	default:
 		prefix = englishHelloPrefix
 	}
-
 	return
+
 }
 
 func main() {
-	fmt.Println(Hello("Steve", "French"))
+	fmt.Println(Hello("world", ""))
 }
