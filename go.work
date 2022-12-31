@@ -1,6 +1,7 @@
 go 1.19
 
 use (
+	./arrays_and_slices
 	./hello_world
 	./integers
 	./iteration
