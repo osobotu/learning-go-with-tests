@@ -5,4 +5,5 @@ use (
 	./hello_world
 	./integers
 	./iteration
+	./structs_methods_interfaces
 )
