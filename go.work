@@ -5,6 +5,7 @@ use (
 	./hello_world
 	./integers
 	./iteration
+	./maps
 	./pointers_and_errors
 	./structs_methods_interfaces
 )
