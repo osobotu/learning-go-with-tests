@@ -2,6 +2,7 @@ go 1.19
 
 use (
 	./arrays_and_slices
+	./dependency_injection
 	./hello_world
 	./integers
 	./iteration
