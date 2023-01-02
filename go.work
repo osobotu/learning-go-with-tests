@@ -6,7 +6,9 @@ use (
 	./hello_world
 	./integers
 	./iteration
+	./main
 	./maps
+	./mocking
 	./pointers_and_errors
 	./structs_methods_interfaces
 )
