@@ -3,6 +3,7 @@ go 1.19
 use (
 	./arrays_and_slices
 	./concurrency
+	./context
 	./dependency_injection
 	./hello_world
 	./integers
