@@ -10,6 +10,7 @@ use (
 	./iteration
 	./main
 	./maps
+	./maths
 	./mocking
 	./pointers_and_errors
 	./property_based_tests

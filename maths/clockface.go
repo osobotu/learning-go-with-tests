@@ -13,6 +13,7 @@ type Point struct {
 
 const (
 	secondHandLength = 90
+	minuteHandLength = 80
 	clockCentreX     = 150
 	clockCentreY     = 150
 )
@@ -37,7 +38,14 @@ func SVGWriter(w io.Writer, t time.Time) {
 	io.WriteString(w, svgStart)
 	io.WriteString(w, bezel)
 	secondHand(w, t)
+	minuteHand(w, t)
 	io.WriteString(w, svgEnd)
+}
+
+func angleToPoint(angle float64) Point {
+	x := math.Sin(angle)
+	y := math.Cos(angle)
+	return Point{x, y}
 }
 
 // SecondHand is a unit vector of the second hand of an analogue clock
@@ -60,8 +68,22 @@ func secondsInRadians(t time.Time) float64 {
 
 func secondHandPoint(t time.Time) Point {
 	angle := secondsInRadians(t)
-	x := math.Sin(angle)
-	y := math.Cos(angle)
+	return angleToPoint(angle)
+}
 
-	return Point{x, y}
+func minutesInRadians(t time.Time) float64 {
+	return (secondsInRadians(t) / 60) + (math.Pi / (30 / float64(t.Minute())))
+}
+
+func minuteHandPoint(t time.Time) Point {
+	angle := minutesInRadians(t)
+	return angleToPoint(angle)
+}
+
+func minuteHand(w io.Writer, t time.Time) {
+	p := minuteHandPoint((t))
+	p = Point{p.X * minuteHandLength, p.Y * minuteHandLength}
+	p = Point{p.X, -p.Y}
+	p = Point{p.X + clockCentreX, p.Y + clockCentreY}
+	fmt.Fprintf(w, `<line x1="150" y1="150" x2="%.3f" y2="%.3f" style="fill:none;stroke:#000;stroke-width:3px;"/>`, p.X, p.Y)
 }
